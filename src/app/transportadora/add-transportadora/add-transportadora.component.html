@@ -1,0 +1,69 @@
+<div class="container-xl">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4><b>Cadastrar Transportadora</b></h4>
+            </div>
+            <div class="col-sm-6">
+              <a href="#" routerLink="/Transportadora" class="btn btn-success back"><i class='fas fa-arrow-circle-left'></i>
+                 Voltar</a>
+            </div>
+          </div>
+        </div>
+        <form #transportadoraForm="ngForm">
+          <div class="table-content">
+            <div class="form-group p-10 row">
+              <div class="col-sm-4">
+                <label for="Cnpj" class="p-t-b-10">CNPJ<span class="requiredStar">*</span></label>
+              </div>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="cnpj" required maxlength="14" [(ngModel)]="addTransportadoraForm.Cnpj" 
+                name="Cnpj" #Cnpj="ngModel" pattern="[0-9]{14}">
+                <div *ngIf="Cnpj.errors && isSubmitted" style="color: red;" class="alert-danger validationError">
+                  <div [hidden]="!Cnpj.errors['required']">
+                    Campo Obrigatório
+                  </div>
+                  <div [hidden]="!Cnpj.errors['touched'] && !Cnpj.errors['pattern']">
+                    Formato Inválido (Apenas números) | 14 números
+                </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group p-10 row">
+              <div class="col-sm-4">
+                <label for="RazaoSocial" class="p-t-b-10">Razão Social<span class="requiredStar">*</span></label>
+              </div>
+              <div class="col-sm-8">
+                <input type="input" class="form-control" id="RazaoSocial" required maxlength="150"
+                  [(ngModel)]="addTransportadoraForm.RazaoSocial" name="Cnh" #RazaoSocial="ngModel">
+                  <div *ngIf="RazaoSocial.errors && isSubmitted" style="color: red;" class="alert-danger validationError">
+                    <div [hidden]="!RazaoSocial.errors['required']">
+                      Campo Obrigatório
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="form-group p-10 row">
+                <div class="col-sm-4">
+                  <label for="NomeFantasia" class="p-t-b-10">Nome Fantasia<span class="requiredStar">*</span></label>
+                </div>
+                <div class="col-sm-8">
+                  <input type="input" class="form-control" id="NomeFantasia" required maxlength="150"
+                    [(ngModel)]="addTransportadoraForm.NomeFantasia" name="Cnh" #NomeFantasia="ngModel">
+                    <div *ngIf="NomeFantasia.errors && isSubmitted" style="color: red;" class="alert-danger validationError">
+                      <div [hidden]="!NomeFantasia.errors['required']">
+                        Campo Obrigatório
+                      </div>
+                    </div>
+                </div>
+              </div>
+          </div>
+          <div class="table-footer" style="margin-top: 15px;">
+            <button class="btn btn-success" (click)="salvarTransportadora(transportadoraForm.form.valid)">Enviar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

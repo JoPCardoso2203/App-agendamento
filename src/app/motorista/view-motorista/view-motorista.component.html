@@ -1,0 +1,40 @@
+<div class="container-xl">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4><b>Visualizar Motorista</b></h4>
+            </div>
+            <div class="col-sm-6">
+              <a href="#" routerLink="/Motorista" class="btn btn-success back"><i class='fas fa-arrow-circle-left'></i>Voltar</a>
+            </div>
+          </div>
+        </div>       
+        <table class="table table-striped table-hover table-bordered table-conten">
+          <tbody>
+            <tr>
+              <td><label><b>Nome</b></label></td>
+              <td><span>{{ motoristaDetalhes.nome }}</span></td>
+            </tr>
+            <tr>
+              <td><label><b>CPF</b></label> </td>
+              <td><span>{{ formatCpf(motoristaDetalhes.cpf) }}</span></td>
+            </tr>
+            <tr>
+              <td> <label><b>CNH</b></label></td>
+              <td> <span>{{ formatCnh(motoristaDetalhes.cnh) }}</span></td>
+            </tr>
+            <tr>
+                <td> <label><b>Placa do veículo</b></label></td>
+                <td> <span>{{ motoristaDetalhes.placa }}</span></td>
+            </tr>
+            <tr>
+              <td> <label><b>Data de cadastro</b></label></td>
+              <td><span>{{ motoristaDetalhes.dataCriacao | date: 'dd/MM/yyyy HH:mm' }}</span></td>
+            </tr>
+          </tbody>
+        </table>       
+      </div>
+    </div>
+  </div>

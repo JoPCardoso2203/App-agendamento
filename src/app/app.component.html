@@ -1,0 +1,44 @@
+<style>
+  .toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #160663;
+    color: white;
+    font-weight: 600;
+  }
+
+  .toolbar i {
+    padding-left: 30px;
+    cursor: pointer;
+  }
+  .toolbar .employee {
+    float: right;
+    padding-right: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+  }
+</style>
+
+<div class="sidebar-slider" [class.sidebar-slide-in]="sidebarShow">
+  <div class="sidebar-content">
+      <a class="sidebar-item" *ngFor="let item of navegate" (click)="Redirecionar(item.path)"><i class="{{item.icon}}" style="margin-right: 10px;"></i> {{item.title}}</a>
+
+  </div>
+</div>
+
+<nav class="navbar fixed-top navbar-expand-md navbar-light white double-nav scrolling-navbar">
+    <div class="toolbar" role="banner">
+    <div class="col-sm-6">
+      <h4><i class='fas fa-bars' (click)="sidebarShow = !sidebarShow"></i></h4>
+    </div>
+    <div class="col-sm-6">
+      <span class="employee"><b><i class='fas fa-book'></i>Gerenciador de Agendamentos</b></span>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>

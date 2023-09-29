@@ -1,0 +1,81 @@
+<div class="container-xl">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4><b>Cadastrar Vínculo Motorista</b></h4>
+            </div>
+            <div class="col-sm-6">
+              <a href="#" routerLink="{{'/ViewTransportadora/' + transportadoraId}}" class="btn btn-success back"><i class='fas fa-arrow-circle-left'></i>
+                 Voltar</a>
+            </div>
+          </div>
+        </div>
+        <form #addVinculoForm="ngForm">
+          <div class="table-content">
+            <div class="form-group p-10 row">
+              <div class="col-sm-4">
+                <label for="Cnpj" class="p-t-b-10">CNPJ<span class="requiredStar">*</span></label>
+              </div>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="cnpj" required maxlength="14" [(ngModel)]="addVinculo.Cnpj" 
+                name="Cnpj" #Cnpj="ngModel" pattern="[0-9]{14}" readonly>
+                <div *ngIf="Cnpj.errors && isSubmitted" style="color: red;" class="alert-danger validationError">
+                  <div [hidden]="!Cnpj.errors['required']">
+                    Campo Obrigatório
+                  </div>
+                  <div [hidden]="!Cnpj.errors['touched'] && !Cnpj.errors['pattern']">
+                    Formato Inválido (Apenas números) | 14 números
+                </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group p-10 row">
+              <div class="col-sm-4">
+                <label for="RazaoSocial" class="p-t-b-10">Razão Social<span class="requiredStar">*</span></label>
+              </div>
+              <div class="col-sm-8">
+                <input type="input" class="form-control" id="RazaoSocial" required maxlength="150"
+                  [(ngModel)]="addVinculo.RazaoSocial" name="RazaoSocial" #RazaoSocial="ngModel" readonly>
+                  <div *ngIf="RazaoSocial.errors && isSubmitted" style="color: red;" class="alert-danger validationError">
+                    <div [hidden]="!RazaoSocial.errors['required']">
+                      Campo Obrigatório
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="form-group p-10 row">
+                <div class="col-sm-4">
+                  <label class="p-t-b-10">Motorista<span class="requiredStar">*</span></label>
+                </div>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" id="Cpf" required maxlength="11" placeholder="CPF do Motorista"
+                    [(ngModel)]="addVinculo.Cpf" name="Cpf" #Cpf="ngModel">
+                  <div *ngIf="Cpf.errors && isSubmitted" style="color: red;" class="alert-danger validationError">
+                    <div [hidden]="!Cpf.errors['required']">
+                      Campo Obrigatório
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-1">
+                  <button class="btn btn-primary" (click)="BuscarMotorista()"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </div>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="Nome" required placeholder="Nome do Motorista"
+                    [(ngModel)]="addVinculo.Nome" name="Nome" #Nome="ngModel" readonly>
+                  <div *ngIf="Nome.errors && isSubmitted" style="color: red;" class="alert-danger validationError">
+                    <div [hidden]="!Nome.errors['required']">
+                      Campo Obrigatório
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="table-footer" style="margin-top: 15px;">
+            <button class="btn btn-success" (click)="salvarVinculo(addVinculoForm.form.valid)">Enviar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

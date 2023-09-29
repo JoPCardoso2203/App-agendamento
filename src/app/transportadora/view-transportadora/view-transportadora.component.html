@@ -1,0 +1,79 @@
+<div class="container-xl">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4><b>Visualizar Transportadora</b></h4>
+            </div>
+            <div class="col-sm-6">
+              <a href="#" routerLink="/Transportadora" class="btn btn-success back"><i class='fas fa-arrow-circle-left'></i>Voltar</a>
+            </div>
+          </div>
+        </div>       
+        <table class="table table-striped table-hover table-bordered table-conten">
+          <tbody>
+            <tr>
+              <td><label><b>CNPJ</b></label></td>
+              <td><span>{{ formatCnpj(transportadoraDetalhes.cnpj) }}</span></td>
+            </tr>
+            <tr>
+              <td><label><b>Razão Social</b></label> </td>
+              <td><span>{{ transportadoraDetalhes.razaoSocial }}</span></td>
+            </tr>
+            <tr>
+              <td> <label><b>Nome Fantasia</b></label></td>
+              <td> <span>{{ transportadoraDetalhes.nomeFantasia }}</span></td>
+            </tr>
+            <tr>
+              <td> <label><b>Data de cadastro</b></label></td>
+              <td><span>{{ transportadoraDetalhes.dataCriacao | date: 'dd/MM/yyyy HH:mm' }}</span></td>
+            </tr>
+          </tbody>
+        </table>       
+      </div>
+    </div>
+  </div>
+  <div class="container-xl">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4><b>Motoristas Vinculados</b></h4>
+            </div>
+            <div class="col-sm-6">
+              <button class="btn btn-success" (click)="AddVinculo()">
+                <i class='fas fa-plus-circle'></i><span> ADD</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <table class="table table-striped table-hover table-bordered table-content">
+            <thead>
+              <tr class="center-align">
+                <th>Nome</th>
+                <th>CNH</th>
+                <th>CPF</th>
+                <th>Placa do Veículo</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let vinculo of listaVinculos" class="center-align">
+                <td>{{ vinculo.nome }}</td>
+                <td>{{ formatCnh(vinculo.cnh) }}</td>
+                <td>{{ formatCpf(vinculo.cpf) }}</td>
+                <td>{{ vinculo.placa}}</td>
+                <td>
+                  <button type="button" (click)="deleteVinculoConfirmacao({ idTransportadora: transportadoraId, idMotorista: vinculo.idMotorista })" class="btn"><i class='fas fa-trash-alt delete'></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td *ngIf="listaVinculos.length == 0" colspan="7">Nenhum motorista encontrado!</td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
